@@ -1,6 +1,6 @@
 # lab-ci
 
-![CI](https://github.com/USERNAME/lab-ci/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/andriyyaremenkoce2024-sudo/lab-ci/actions/workflows/ci.yml/badge.svg)
 
 Лабораторна робота №4: unit-тести (pytest) та CI/CD з GitHub Actions.
 
@@ -16,3 +16,4 @@ ruff format --check .
 mypy src tests
 pytest -v
 ```
+і
