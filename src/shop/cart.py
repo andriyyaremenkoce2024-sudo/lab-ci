@@ -53,6 +53,3 @@ class Cart:
         if rate <= 0:
             raise ValueError("rate must be positive")
         return round(self.total() / rate, 2)
-
-    def format_total(self) -> str:
-        return self.total()
