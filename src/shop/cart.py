@@ -37,6 +37,11 @@ class Cart:
     def items_count(self) -> int:
         return sum(item.qty for item in self._items.values())
 
+    def most_expensive(self) -> Item | None:
+        if not self._items:
+            return None
+        return max(self._items.values(), key=lambda item: item.price)
+
     def total(self, discount_percent: float = 0) -> float:
         if not 0 <= discount_percent <= 100:
             raise ValueError("discount_percent must be in [0, 100]")
