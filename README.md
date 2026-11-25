@@ -1,5 +1,7 @@
 # lab-ci
 
+![CI](https://github.com/USERNAME/lab-ci/actions/workflows/ci.yml/badge.svg)
+
 Лабораторна робота №4: unit-тести (pytest) та CI/CD з GitHub Actions.
 
 ## Локальний запуск
