@@ -127,3 +127,32 @@ def test_total_in_non_positive_rate_raises(cart_with_items: Cart, bad_rate: floa
     rates.get_rate.return_value = bad_rate
     with pytest.raises(ValueError, match="rate"):
         cart_with_items.total_in("USD", rates)
+
+
+# ---------- most_expensive (TDD) ----------
+
+
+def test_most_expensive_empty_cart_returns_none(empty_cart: Cart) -> None:
+    assert empty_cart.most_expensive() is None
+
+
+def test_most_expensive_by_unit_price(cart_with_items: Cart) -> None:
+    item = cart_with_items.most_expensive()
+    assert item is not None
+    assert item.name == "book"
+
+
+def test_most_expensive_ignores_quantity(empty_cart: Cart) -> None:
+    # pen: 15 * 100 = 1500 у сумі, але дорожча за одиницю — book
+    empty_cart.add("pen", price=15.0, qty=100)
+    empty_cart.add("book", price=200.0, qty=1)
+    item = empty_cart.most_expensive()
+    assert item is not None
+    assert item.name == "book"
+
+
+def test_most_expensive_single_item(empty_cart: Cart) -> None:
+    empty_cart.add("pen", price=15.0)
+    item = empty_cart.most_expensive()
+    assert item is not None
+    assert item.price == 15.0
